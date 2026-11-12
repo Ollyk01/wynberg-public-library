@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Wynberg Public Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <a href="#overview" class="brand">
+            <span class="brand-mark">W</span>
+            <span class="brand-text"><strong>Wynberg</strong><small>Public Library</small></span>
+        </a>
+
+        <div class="sidebar-heading">MAIN MENU</div>
+        <nav class="sidebar-nav" aria-label="Admin navigation">
+            <a href="#overview" class="nav-link active" data-section="overview"><span class="nav-icon">▦</span>Overview</a>
+            <a href="#books" class="nav-link" data-section="books"><span class="nav-icon">▤</span>Book Management</a>
+            <a href="#members" class="nav-link" data-section="members"><span class="nav-icon">♙</span>Members</a>
+            <a href="#loans" class="nav-link" data-section="loans"><span class="nav-icon">⇄</span>Borrowings & Returns</a>
+            <a href="#reservations" class="nav-link" data-section="reservations"><span class="nav-icon">▣</span>Reservations</a>
+            <a href="#fines" class="nav-link" data-section="fines"><span class="nav-icon">R</span>Fine Management</a>
+            <a href="#reports" class="nav-link" data-section="reports"><span class="nav-icon">▥</span>Reports</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-help">
+                <div class="help-icon">?</div>
+                <strong>Need assistance?</strong>
+                <p>Contact the system administrator for support.</p>
+            </div>
+            <a href="admin-login.html" class="logout-link"><span class="nav-icon">↪</span>Log out</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+                <div><p class="eyebrow">WYNBERG PUBLIC LIBRARY</p><h1 id="pageTitle">Overview</h1></div>
+            </div>
+            <div class="topbar-right">
+                <button class="icon-button" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+                <div class="admin-profile">
+                    <div class="avatar">AM</div>
+                    <div class="admin-profile-text"><strong>Alex Morgan</strong><small>Administrator</small></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <section class="dashboard-section active-section" id="overview">
+                <div class="welcome-row">
+                    <div><h2>Good morning, Alex</h2><p>Here is what is happening at your library today.</p></div>
+                    <div class="date-display" id="todayDate"></div>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card"><div class="stat-top"><span>Total Books</span><span class="stat-icon blue">▤</span></div><strong class="stat-number">2,480</strong><small><span class="positive">+24</span> added this month</small></article>
+                    <article class="stat-card"><div class="stat-top"><span>Registered Members</span><span class="stat-icon purple">♙</span></div><strong class="stat-number">846</strong><small><span class="positive">+18</span> new this month</small></article>
+                    <article class="stat-card"><div class="stat-top"><span>Books on Loan</span><span class="stat-icon orange">⇄</span></div><strong class="stat-number">312</strong><small>Currently borrowed</small></article>
+                    <article class="stat-card"><div class="stat-top"><span>Overdue Books</span><span class="stat-icon red">!</span></div><strong class="stat-number">27</strong><small><span class="warning-text">Requires attention</span></small></article>
+                </div>
+
+                <div class="overview-grid">
+                    <article class="panel">
+                        <div class="panel-heading"><div><h3>Recent Borrowings</h3><p>Latest books checked out by members</p></div><a href="#loans" class="text-link" data-section-link="loans">View all</a></div>
+                        <div class="table-scroll">
+                            <table>
+                                <thead><tr><th>Member</th><th>Book</th><th>Date Borrowed</th><th>Due Date</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Thando Mokoena</td><td>The Alchemist</td><td>10 Nov 2026</td><td>24 Nov 2026</td><td><span class="status status-active">Active</span></td></tr>
+                                    <tr><td>Sarah Jacobs</td><td>Homegoing</td><td>08 Nov 2026</td><td>22 Nov 2026</td><td><span class="status status-active">Active</span></td></tr>
+                                    <tr><td>Lebo Nkosi</td><td>Atomic Habits</td><td>20 Oct 2026</td><td>03 Nov 2026</td><td><span class="status status-overdue">Overdue</span></td></tr>
+                                    <tr><td>Amira Daniels</td><td>Born a Crime</td><td>09 Nov 2026</td><td>23 Nov 2026</td><td><span class="status status-active">Active</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <article class="panel activity-panel">
+                        <div class="panel-heading"><div><h3>Recent Activity</h3><p>Latest library transactions</p></div></div>
+                        <div class="activity-list">
+                            <div class="activity-item"><span class="activity-marker"></span><div><strong>Book returned</strong><p>Sarah Jacobs returned <em>Things Fall Apart</em>.</p><small>Today, 09:42</small></div></div>
+                            <div class="activity-item"><span class="activity-marker blue-marker"></span><div><strong>New member registered</strong><p>Daniel Williams joined the library.</p><small>Today, 09:15</small></div></div>
+                            <div class="activity-item"><span class="activity-marker orange-marker"></span><div><strong>Reservation placed</strong><p>Thando Mokoena reserved <em>Ikigai</em>.</p><small>Yesterday, 15:30</small></div></div>
+                            <div class="activity-item"><span class="activity-marker red-marker"></span><div><strong>Overdue notice</strong><p>A reminder was recorded for Lebo Nkosi.</p><small>Yesterday, 11:05</small></div></div>
+                        </div>
+                    </article>
+                </div>
+
+                <article class="panel quick-actions">
+                    <div class="panel-heading"><div><h3>Quick Actions</h3><p>Common tasks you can perform</p></div></div>
+                    <div class="quick-action-grid">
+                        <button class="quick-action" data-open-section="books"><span>＋</span><strong>Add a Book</strong><small>Add a title to the catalogue</small></button>
+                        <button class="quick-action" data-open-section="members"><span>♙</span><strong>Register a Member</strong><small>Create a library account</small></button>
+                        <button class="quick-action" data-open-section="loans"><span>⇄</span><strong>Issue a Book</strong><small>Record a new borrowing</small></button>
+                        <button class="quick-action" data-open-section="fines"><span>R</span><strong>Manage Fines</strong><small>Review outstanding fines</small></button>
+                    </div>
+                </article>
+            </section>
+
+            <section class="dashboard-section" id="books">
+                <div class="section-intro"><div><h2>Book Management</h2><p>Maintain the library catalogue and available copies.</p></div><button class="primary-button" id="addBookButton">＋ Add New Book</button></div>
+                <div class="toolbar"><input type="search" id="bookSearch" placeholder="Search by title, author or ISBN..."><select id="bookCategory"><option value="">All categories</option><option>Fiction</option><option>Non-fiction</option><option>Science</option><option>History</option><option>Biography</option></select></div>
+                <div class="panel table-panel"><div class="table-scroll">
+                    <table id="booksTable">
+                        <thead><tr><th>Book ID</th><th>Title</th><th>Author</th><th>Category</th><th>Total Copies</th><th>Available</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>BK001</td><td>The Alchemist</td><td>Paulo Coelho</td><td>Fiction</td><td>8</td><td>5</td><td><span class="status status-active">Available</span></td></tr>
+                            <tr><td>BK002</td><td>Homegoing</td><td>Yaa Gyasi</td><td>Fiction</td><td>5</td><td>2</td><td><span class="status status-active">Available</span></td></tr>
+                            <tr><td>BK003</td><td>Atomic Habits</td><td>James Clear</td><td>Non-fiction</td><td>6</td><td>0</td><td><span class="status status-overdue">Out of stock</span></td></tr>
+                            <tr><td>BK004</td><td>A Brief History of Time</td><td>Stephen Hawking</td><td>Science</td><td>4</td><td>3</td><td><span class="status status-active">Available</span></td></tr>
+                            <tr><td>BK005</td><td>Born a Crime</td><td>Trevor Noah</td><td>Biography</td><td>7</td><td>4</td><td><span class="status status-active">Available</span></td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </section>
+
+            <section class="dashboard-section" id="members">
+                <div class="section-intro"><div><h2>Library Members</h2><p>View and manage registered library members.</p></div><button class="primary-button" id="addMemberButton">＋ Register Member</button></div>
+                <div class="toolbar"><input type="search" id="memberSearch" placeholder="Search by member name or ID..."><select><option>All members</option><option>Active</option><option>Suspended</option></select></div>
+                <div class="panel table-panel"><div class="table-scroll">
+                    <table id="membersTable">
+                        <thead><tr><th>Member ID</th><th>Full Name</th><th>Email</th><th>Phone</th><th>Date Joined</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>WPL000123</td><td>Thando Mokoena</td><td>thando@example.com</td><td>071 234 5678</td><td>12 Feb 2026</td><td><span class="status status-active">Active</span></td></tr>
+                            <tr><td>WPL000124</td><td>Sarah Jacobs</td><td>sarah@example.com</td><td>082 345 6789</td><td>18 Mar 2026</td><td><span class="status status-active">Active</span></td></tr>
+                            <tr><td>WPL000125</td><td>Lebo Nkosi</td><td>lebo@example.com</td><td>073 456 7890</td><td>02 Apr 2026</td><td><span class="status status-active">Active</span></td></tr>
+                            <tr><td>WPL000126</td><td>Amira Daniels</td><td>amira@example.com</td><td>079 567 8901</td><td>21 Jun 2026</td><td><span class="status status-suspended">Suspended</span></td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </section>
+
+            <section class="dashboard-section" id="loans">
+                <div class="section-intro"><div><h2>Borrowings & Returns</h2><p>Issue books, record returns and monitor due dates.</p></div><button class="primary-button" id="issueBookButton">＋ Issue a Book</button></div>
+                <div class="stats-grid compact-stats">
+                    <article class="stat-card"><div class="stat-top"><span>Active Loans</span><span class="stat-icon blue">⇄</span></div><strong class="stat-number">312</strong></article>
+                    <article class="stat-card"><div class="stat-top"><span>Due Today</span><span class="stat-icon orange">◷</span></div><strong class="stat-number">12</strong></article>
+                    <article class="stat-card"><div class="stat-top"><span>Overdue</span><span class="stat-icon red">!</span></div><strong class="stat-number">27</strong></article>
+                </div>
+                <div class="toolbar"><input type="search" id="loanSearch" placeholder="Search member or book..."><select><option>All loans</option><option>Active</option><option>Overdue</option><option>Returned</option></select></div>
+                <div class="panel table-panel"><div class="table-scroll">
+                    <table id="loansTable">
+                        <thead><tr><th>Loan ID</th><th>Member</th><th>Book</th><th>Borrowed</th><th>Due Date</th><th>Status</th><th>Action</th></tr></thead>
+                        <tbody>
+                            <tr><td>LN1001</td><td>Thando Mokoena</td><td>The Alchemist</td><td>10 Nov 2026</td><td>24 Nov 2026</td><td><span class="status status-active">Active</span></td><td><button class="table-action return-button">Record return</button></td></tr>
+                            <tr><td>LN1002</td><td>Sarah Jacobs</td><td>Homegoing</td><td>08 Nov 2026</td><td>22 Nov 2026</td><td><span class="status status-active">Active</span></td><td><button class="table-action return-button">Record return</button></td></tr>
+                            <tr><td>LN1003</td><td>Lebo Nkosi</td><td>Atomic Habits</td><td>20 Oct 2026</td><td>03 Nov 2026</td><td><span class="status status-overdue">Overdue</span></td><td><button class="table-action return-button">Record return</button></td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </section>
+
+            <section class="dashboard-section" id="reservations">
+                <div class="section-intro"><div><h2>Reservations</h2><p>Review books reserved by library members.</p></div></div>
+                <div class="panel table-panel"><div class="table-scroll">
+                    <table><thead><tr><th>Reservation ID</th><th>Member</th><th>Book</th><th>Reserved On</th><th>Status</th><th>Action</th></tr></thead>
+                        <tbody>
+                            <tr><td>RS2001</td><td>Thando Mokoena</td><td>Ikigai</td><td>11 Nov 2026</td><td><span class="status status-pending">Pending</span></td><td><button class="table-action reservation-button">Mark ready</button></td></tr>
+                            <tr><td>RS2002</td><td>Sarah Jacobs</td><td>Sapiens</td><td>10 Nov 2026</td><td><span class="status status-pending">Pending</span></td><td><button class="table-action reservation-button">Mark ready</button></td></tr>
+                            <tr><td>RS2003</td><td>Daniel Williams</td><td>Homegoing</td><td>07 Nov 2026</td><td><span class="status status-active">Ready for collection</span></td><td><button class="table-action reservation-button">Complete</button></td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </section>
+
+            <section class="dashboard-section" id="fines">
+                <div class="section-intro"><div><h2>Fine Management</h2><p>Review overdue fines and record payments.</p></div></div>
+                <div class="stats-grid compact-stats">
+                    <article class="stat-card"><div class="stat-top"><span>Outstanding Fines</span><span class="stat-icon red">R</span></div><strong class="stat-number">R 2,450.00</strong></article>
+                    <article class="stat-card"><div class="stat-top"><span>Collected This Month</span><span class="stat-icon green">✓</span></div><strong class="stat-number">R 1,280.00</strong></article>
+                    <article class="stat-card"><div class="stat-top"><span>Members with Fines</span><span class="stat-icon orange">♙</span></div><strong class="stat-number">19</strong></article>
+                </div>
+                <div class="fine-note"><strong>Fine calculation:</strong> Fine = number of overdue days × daily fine rate. This prototype uses R5.00 per day as an example only. Confirm the actual rate required by your library.</div>
+                <div class="panel table-panel"><div class="table-scroll">
+                    <table><thead><tr><th>Fine ID</th><th>Member</th><th>Book</th><th>Days Overdue</th><th>Daily Rate</th><th>Fine Amount</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>FN3001</td><td>Lebo Nkosi</td><td>Atomic Habits</td><td>5</td><td>R5.00</td><td>R25.00</td><td><span class="status status-pending">Unpaid</span></td></tr>
+                            <tr><td>FN3002</td><td>Daniel Williams</td><td>Ikigai</td><td>8</td><td>R5.00</td><td>R40.00</td><td><span class="status status-pending">Unpaid</span></td></tr>
+                            <tr><td>FN3003</td><td>Amira Daniels</td><td>Educated</td><td>2</td><td>R5.00</td><td>R10.00</td><td><span class="status status-active">Paid</span></td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </section>
+
+            <section class="dashboard-section" id="reports">
+                <div class="section-intro"><div><h2>Reports</h2><p>High-level summaries of library activity.</p></div></div>
+                <div class="report-grid">
+                    <article class="panel report-card"><span class="report-icon">▤</span><h3>Inventory Summary</h3><p>Review total titles, copies, available books and books currently on loan.</p><button class="secondary-button" data-report="Inventory Summary">Generate report</button></article>
+                    <article class="panel report-card"><span class="report-icon">⇄</span><h3>Borrowing Report</h3><p>Review borrowing activity, returns and overdue books for a selected period.</p><button class="secondary-button" data-report="Borrowing Report">Generate report</button></article>
+                    <article class="panel report-card"><span class="report-icon">♙</span><h3>Membership Report</h3><p>Review registered members and membership activity.</p><button class="secondary-button" data-report="Membership Report">Generate report</button></article>
+                    <article class="panel report-card"><span class="report-icon">R</span><h3>Fine Report</h3><p>Review outstanding balances and fine payments.</p><button class="secondary-button" data-report="Fine Report">Generate report</button></article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="modal-backdrop" id="demoModal" aria-hidden="true">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close dialog">×</button>
+            <h3 id="modalTitle">Action</h3>
+            <p id="modalMessage">This is a front-end demonstration.</p>
+            <button class="primary-button" id="modalOkay">Okay</button>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Login | Wynberg Public Library</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="customer.css">
+</head>
+<body class="login-page">
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">▤</span>
+      <span>
+        WYNBERG
+        <strong>PUBLIC LIBRARY</strong>
+      </span>
+    </a>
+
+    <a href="index.html" class="back">← Back to home</a>
+  </header>
+
+  <main class="login-layout">
+
+    <section class="login-photo">
+      <div>
+        <small>YOUR LIBRARY, IN ONE PLACE</small>
+        <h1>Welcome back<br>to your reading journey.</h1>
+        <p>Keep track of your books, reservations and library account with ease.</p>
+      </div>
+    </section>
+
+    <section class="login-area">
+      <form class="login-card" id="login-form">
+
+        <small class="red">CUSTOMER PORTAL</small>
+
+        <h2>Sign in to your account</h2>
+        <p class="muted">Enter your library account details to continue.</p>
+
+        <label for="identity">Library card number or email</label>
+        <input
+          id="identity"
+          type="text"
+          required
+          placeholder="e.g. WPL000123 or name@email.com"
+          autocomplete="username"
+        >
+
+        <div class="pass-label">
+          <label for="password">Password</label>
+          <a href="#" id="forgot">Forgot password?</a>
+        </div>
+
+        <div class="pass-wrap">
+          <input
+            id="password"
+            type="password"
+            required
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          >
+          <button type="button" id="show-pass">Show</button>
+        </div>
+
+        <p class="message" id="message" aria-live="polite"></p>
+
+        <button class="primary full" type="submit">
+          Sign in <span>→</span>
+        </button>
+
+        <div class="notice">
+          <b>i</b>
+          <p>Don't have online access yet? Please speak to a librarian to have your customer account set up.</p>
+        </div>
+
+        <p class="demo">
+          Prototype preview: enter any non-empty library card/email and password to open the sample dashboard. Real account verification will be added with the backend.
+        </p>
+
+      </form>
+    </section>
+
+  </main>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

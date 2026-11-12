@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover books and library services at Wynberg Public Library.">
+  <title>Wynberg Public Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home" aria-label="Wynberg Public Library home">
+    <span class="brand-mark" aria-hidden="true">▤</span>
+    <span>WYNBERG<strong>PUBLIC LIBRARY</strong></span>
+  </a>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav"><i></i><i></i><i></i></button>
+  <nav class="main-nav" id="main-nav">
+    <a class="active" href="#home">Home</a><a href="#browse">Browse Books</a><a href="#account">My Account</a><a href="#about">About Us</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <p class="eyebrow">READ. LEARN. DISCOVER.</p>
+      <h1>Welcome to</h1>
+      <p class="hero-name">Wynberg Public Library</p>
+      <form class="search-form" id="book-search" role="search">
+        <label class="sr-only" for="search-input">Search books, authors or categories</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search-input" type="search" placeholder="Search books, authors or categories..." autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
+      <p class="search-feedback" id="search-feedback" aria-live="polite"></p>
+    </div>
+    <a class="scroll-cue" href="#browse" aria-label="Explore below"><span></span></a>
+  </section>
+  <section class="intro-section" id="browse">
+    <div class="section-heading"><p class="eyebrow red">YOUR COMMUNITY LIBRARY</p><h2>A world of stories awaits.</h2><p>Explore new ideas, revisit old favourites and find your next great read at Wynberg Public Library.</p></div>
+    <div class="feature-grid">
+      <article class="feature-card"><div class="feature-icon">⌕</div><h3>Explore the collection</h3><p>Discover books and resources for readers of every age and interest.</p></article>
+      <article class="feature-card"><div class="feature-icon">▤</div><h3>Your library account</h3><p>Keep track of borrowed books, due dates and your borrowing history.</p><a href="#account" class="text-link">Go to my account →</a></article>
+      <article class="feature-card"><div class="feature-icon">♡</div><h3>A place for everyone</h3><p>A welcoming space for reading, learning and connecting with the community.</p></article>
+    </div>
+  </section>
+  <section class="account-banner" id="account">
+    <div><p class="eyebrow">MEMBER ACCESS</p><h2>Keep your reading journey on track.</h2><p>Sign in to view your borrowed books, upcoming return dates and account information.</p></div>
+    <a class="light-button" href="customer-login.html">Customer login →</a>
+  </section>
+  <section class="about-section" id="about"><p class="eyebrow red">ABOUT THE LIBRARY</p><h2>More than books. A community.</h2><p>Wynberg Public Library is a place to discover knowledge, enjoy the power of stories and access resources that support lifelong learning.</p></section>
+</main>
+<footer class="site-footer" id="contact"><a class="footer-brand" href="#home">WYNBERG <strong>PUBLIC LIBRARY</strong></a><p>Read. Learn. Discover.</p><span>© <span id="year"></span> Wynberg Public Library. All rights reserved.</span></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

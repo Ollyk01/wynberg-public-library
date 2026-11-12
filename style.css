@@ -1,0 +1,583 @@
+
+/* ========================================
+   GLOBAL STYLES
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: #171717;
+  background: #fff;
+  font-family: "DM Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:root {
+  --red: #142840;
+  --dark: #171717;
+  --muted: #686868;
+}
+
+
+/* ========================================
+   HEADER AND NAVIGATION
+======================================== */
+
+.site-header {
+  position: relative;
+  z-index: 10;
+  min-height: 100px;
+  padding: 0 clamp(22px, 5.5vw, 78px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 3px 12px #0002;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.brand-mark {
+  font-size: 30px;
+}
+
+.brand strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: 2.35px;
+  font-weight: 500;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 42px);
+}
+
+.main-nav a {
+  position: relative;
+  padding: 38px 0 36px;
+  font-size: 16px;
+  color: #ffffffed;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #fff;
+}
+
+.main-nav a.active:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  height: 2px;
+  background: #fff;
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 8px;
+}
+
+.menu-toggle i {
+  display: block;
+  width: 23px;
+  height: 2px;
+  margin: 5px;
+  background: #fff;
+}
+
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hero {
+  height: 570px;
+  min-height: min(620px, calc(100vh - 76px));
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #fff;
+  background: url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2000&q=85") center 47% / cover;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #0006 0%,
+    #0008 48%,
+    #000f 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(900px, calc(100% - 36px));
+  text-align: center;
+  margin-top: -4px;
+}
+
+.eyebrow {
+  margin: 0 0 15px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #ffffffbf;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(35px, 5vw, 54px);
+  line-height: 1.13;
+  font-weight: 600;
+  letter-spacing: -1.8px;
+}
+
+.hero-name {
+  margin: 4px 0 27px;
+  color: #ffffff;
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+
+/* ========================================
+   BOOK SEARCH FORM
+======================================== */
+
+.search-form {
+  width: min(510px, 100%);
+  height: 48px;
+  margin: auto;
+  padding: 4px 5px 4px 17px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 8px 30px #0003;
+}
+
+.search-icon {
+  font-size: 25px;
+  color: #292929;
+}
+
+.search-form input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #222;
+  font-size: 12px;
+}
+
+.search-form input::placeholder {
+  color: #777;
+}
+
+.search-form button {
+  align-self: stretch;
+  border: 0;
+  border-radius: 5px;
+  padding: 0 18px;
+  color: #fff;
+  background: var(--red);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-form button:hover,
+.light-button:hover {
+  background: #a90007;
+}
+
+.search-feedback {
+  min-height: 18px;
+  margin: 11px 0 0;
+  color: #fff;
+  font-size: 12px;
+}
+
+
+/* ========================================
+   HERO SCROLL INDICATOR
+======================================== */
+
+.scroll-cue {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  width: 22px;
+  height: 32px;
+  border: 1px solid #ffffff99;
+  border-radius: 14px;
+  transform: translateX(-50%);
+}
+
+.scroll-cue span {
+  display: block;
+  width: 3px;
+  height: 6px;
+  margin: 6px auto;
+  background: #fff;
+  border-radius: 3px;
+  animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+}
+
+
+/* ========================================
+   INTRODUCTION SECTION
+======================================== */
+
+.intro-section {
+  padding: 88px clamp(22px, 7vw, 100px) 96px;
+  background: #f6f5f3;
+}
+
+.section-heading {
+  max-width: 650px;
+  margin: 0 auto 43px;
+  text-align: center;
+}
+
+.eyebrow.red {
+  color: var(--red);
+}
+
+.section-heading h2,
+.about-section h2 {
+  margin: 0 0 13px;
+  font-size: clamp(28px, 3.5vw, 39px);
+  letter-spacing: -1.2px;
+}
+
+.section-heading > p:last-child,
+.about-section > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   FEATURE CARDS
+======================================== */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.feature-card {
+  padding: 40px 37px;
+  background: #fff;
+  border: 3px solid #ece9e6;
+  border-radius: 9px;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 19px;
+  border-radius: 50%;
+  color: var(--red);
+  background: #fff0f0;
+  font-size: 28px;
+}
+
+.feature-card h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.feature-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 17px;
+  color: var(--red);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   CUSTOMER ACCOUNT BANNER
+======================================== */
+
+.account-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 55px clamp(22px, 9vw, 125px);
+  color: #fff;
+  background: #142840;
+}
+
+.account-banner > div {
+  max-width: 650px;
+}
+
+.account-banner .eyebrow {
+  color: #f8f8f8;
+}
+
+.account-banner h2 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.account-banner p:not(.eyebrow) {
+  margin: 0;
+  color: #c7c7c7;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.light-button {
+  display: inline-flex;
+  padding: 14px 19px;
+  border-radius: 5px;
+  color: #fff;
+  background: var(--red);
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   ABOUT SECTION
+======================================== */
+
+.about-section {
+  max-width: 760px;
+  margin: auto;
+  padding: 85px 24px 90px;
+  text-align: center;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.site-footer {
+  padding: 34px 20px;
+  text-align: center;
+  color: #c7c7c7;
+  background: #101010;
+}
+
+.footer-brand {
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.footer-brand strong {
+  font-weight: 400;
+}
+
+.site-footer p {
+  margin: 8px 0 18px;
+  color: #999;
+  font-size: 12px;
+}
+
+.site-footer > span {
+  font-size: 10px;
+  color: #777;
+}
+
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ========================================
+   TABLET AND MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 760px) {
+
+  .site-header {
+    min-height: 68px;
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 22px 15px;
+    background: var(--red);
+    box-shadow: 0 8px 14px #0002;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav a {
+    padding: 13px 0;
+    font-size: 13px;
+  }
+
+  .main-nav a.active:after {
+    display: none;
+  }
+
+  .hero {
+    height: 510px;
+    min-height: 470px;
+    background-position: center;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+
+  .intro-section {
+    padding-top: 68px;
+    padding-bottom: 70px;
+  }
+
+  .account-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE SCREENS
+======================================== */
+
+@media (max-width: 420px) {
+
+  .brand {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .brand strong {
+    font-size: 7px;
+    letter-spacing: 1.8px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-name {
+    font-size: 29px;
+  }
+
+  .search-form {
+    padding-left: 12px;
+    gap: 7px;
+  }
+
+  .search-form input {
+    font-size: 11px;
+  }
+
+  .search-form button {
+    font-size: 10px;
+    padding: 0 10px;
+  }
+
+}
