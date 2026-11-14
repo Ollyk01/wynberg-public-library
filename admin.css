@@ -1,8 +1,3 @@
-
-/* ===== WYNBERG PUBLIC LIBRARY - ADMIN DASHBOARD ===== */
-
-/* ===== COLOUR VARIABLES ===== */
-
 :root {
     --navy: #142840;
     --navy-light: #203b5c;
@@ -16,7 +11,7 @@
     --shadow: 0 5px 20px rgba(20, 40, 64, 0.05);
 }
 
-/* ===== GLOBAL STYLES ===== */
+/* =====global styles==== */
 
 * {
     box-sizing: border-box;
@@ -40,7 +35,6 @@ a {
     text-decoration: none;
 }
 
-/* ===== SIDEBAR ===== */
 
 .sidebar {
     position: fixed;
@@ -184,14 +178,12 @@ a {
     background: rgba(201, 0, 8, 0.25);
 }
 
-/* ===== MAIN CONTENT ===== */
 
 .main-content {
     min-height: 100vh;
     margin-left: 260px;
 }
 
-/* ===== TOP BAR ===== */
 
 .topbar {
     position: sticky;
@@ -300,7 +292,6 @@ a {
     font-size: 23px;
 }
 
-/* ===== CONTENT WRAPPER ===== */
 
 .content-wrapper {
     width: 100%;
@@ -308,8 +299,6 @@ a {
     margin: 0 auto;
     padding: 32px clamp(22px, 4vw, 55px) 50px;
 }
-
-/* ===== PAGE INTRODUCTION ===== */
 
 .welcome-row,
 .section-intro {
@@ -343,7 +332,6 @@ a {
     font-size: 12px;
 }
 
-/* ===== STATISTICS ===== */
 
 .stats-grid {
     display: grid;
@@ -434,8 +422,6 @@ a {
 .compact-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-
-/* ===== PANELS AND TABLES ===== */
 
 .panel {
     min-width: 0;
@@ -547,7 +533,6 @@ tbody tr:hover {
     background: #fff5e7;
 }
 
-/* ===== RECENT ACTIVITY ===== */
 
 .activity-list {
     display: flex;
@@ -608,7 +593,6 @@ tbody tr:hover {
     font-size: 9px;
 }
 
-/* ===== QUICK ACTIONS ===== */
 
 .quick-actions {
     margin-bottom: 22px;
@@ -662,7 +646,6 @@ tbody tr:hover {
     font-size: 10px;
 }
 
-/* ===== SECTION NAVIGATION ===== */
 
 .dashboard-section {
     display: none;
@@ -676,7 +659,6 @@ tbody tr:hover {
     margin-bottom: 22px;
 }
 
-/* ===== BUTTONS ===== */
 
 .primary-button,
 .secondary-button {
@@ -710,7 +692,6 @@ tbody tr:hover {
     background: var(--navy);
 }
 
-/* ===== TOOLBARS ===== */
 
 .toolbar {
     display: flex;
@@ -744,7 +725,7 @@ tbody tr:hover {
     box-shadow: 0 0 0 3px rgba(20, 40, 64, 0.08);
 }
 
-/* ===== TABLE ACTIONS ===== */
+
 
 .table-panel {
     padding: 10px 17px;
@@ -767,7 +748,7 @@ tbody tr:hover {
     background: var(--navy);
 }
 
-/* ===== FINES ===== */
+
 
 .fine-note {
     margin: 0 0 17px;
@@ -780,7 +761,7 @@ tbody tr:hover {
     line-height: 1.6;
 }
 
-/* ===== REPORTS ===== */
+
 
 .report-grid {
     display: grid;
@@ -813,7 +794,7 @@ tbody tr:hover {
     line-height: 1.6;
 }
 
-/* ===== MODAL ===== */
+
 
 .modal-backdrop {
     position: fixed;
@@ -867,7 +848,7 @@ tbody tr:hover {
     display: none;
 }
 
-/* ===== RESPONSIVE DESIGN: TABLETS ===== */
+/* ====tablets===== */
 
 @media (max-width: 1150px) {
     .stats-grid {
@@ -883,7 +864,7 @@ tbody tr:hover {
     }
 }
 
-/* ===== RESPONSIVE DESIGN: MOBILE ===== */
+/* ====mobile===== */
 
 @media (max-width: 760px) {
     .sidebar {
@@ -943,7 +924,7 @@ tbody tr:hover {
     }
 }
 
-/* ===== RESPONSIVE DESIGN: SMALL MOBILE ===== */
+/* =====small mobile===== */
 
 @media (max-width: 480px) {
     .stats-grid,
