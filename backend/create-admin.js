@@ -1,26 +1,15 @@
 
-// ==========================================
-// WYNBERG PUBLIC LIBRARY - CREATE ADMIN
-// ==========================================
-
 require('dotenv').config();
 
 const bcrypt = require('bcryptjs');
 const db = require('./config/database');
 
-// ==========================================
-// ADMINISTRATOR DETAILS
-// Change these details before running.
-// ==========================================
-
 const adminName = 'Olly Smith';
 const adminEmail = 'admin@wynberglibrary.co.za';
 const adminPassword = 'Jackie014!';
 
-// ==========================================
-// CREATE ADMINISTRATOR
-// ==========================================
 
+//======crete admin account===========
 async function createAdmin() {
     try {
 

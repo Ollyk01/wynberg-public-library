@@ -1,7 +1,3 @@
-// ==========================================
-// WYNBERG PUBLIC LIBRARY - BACKEND SERVER
-// ==========================================
-
 // Load environment variables
 require('dotenv').config();
 
@@ -34,9 +30,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ==========================================
-// SESSION CONFIGURATION
-// ==========================================
+// ==========session configuration=============================
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -59,9 +53,7 @@ app.use('/api/reservations', reservationsRoutes);
 app.use('/api/fines', finesRoutes);
 app.use('/api/auth', authRoutes);
 
-// ==========================================
-// TEST ROUTE
-// ==========================================
+// ==============test route ========================
 
 app.get('/', (req, res) => {
     res.json({
@@ -69,9 +61,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// ==========================================
-// DATABASE CONNECTION TEST
-// ==========================================
+// =======================database connection test==============================
 
 app.get('/api/test-db', async (req, res) => {
     try {
@@ -92,10 +82,6 @@ app.get('/api/test-db', async (req, res) => {
         });
     }
 });
-
-// ==========================================
-// START SERVER
-// ==========================================
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);

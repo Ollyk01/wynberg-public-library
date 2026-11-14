@@ -1,4 +1,5 @@
 
+/* ====general reset==== */
 * {
   box-sizing: border-box;
 }
@@ -25,12 +26,14 @@ input {
   font: inherit;
 }
 
+/* ====root colours==== */
 :root {
   --red: #142840;
   --dark: #171717;
   --muted: #686868;
 }
 
+/* ====header and navigation==== */
 .site-header {
   position: relative;
   z-index: 10;
@@ -93,6 +96,7 @@ input {
   background: #fff;
 }
 
+/* ====mobile menu button==== */
 .menu-toggle {
   display: none;
   border: 0;
@@ -108,6 +112,7 @@ input {
   background: #fff;
 }
 
+/* ====hero section==== */
 .hero {
   height: 570px;
   min-height: min(620px, calc(100vh - 76px));
@@ -163,6 +168,7 @@ input {
   letter-spacing: -1.5px;
 }
 
+/* ====book search==== */
 .search-form {
   width: min(510px, 100%);
   height: 48px;
@@ -218,6 +224,7 @@ input {
   font-size: 12px;
 }
 
+/* ====scroll indicator==== */
 .scroll-cue {
   position: absolute;
   bottom: 22px;
@@ -239,6 +246,7 @@ input {
   animation: scroll 1.5s infinite;
 }
 
+/* ====scroll animation==== */
 @keyframes scroll {
   0% {
     opacity: 0;
@@ -254,6 +262,7 @@ input {
   }
 }
 
+/* ====intro section==== */
 .intro-section {
   padding: 88px clamp(22px, 7vw, 100px) 96px;
   background: #f6f5f3;
@@ -284,6 +293,7 @@ input {
   line-height: 1.8;
 }
 
+/* ====feature cards==== */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -331,6 +341,7 @@ input {
   font-weight: 700;
 }
 
+/* ====account banner==== */
 .account-banner {
   display: flex;
   align-items: center;
@@ -372,6 +383,7 @@ input {
   white-space: nowrap;
 }
 
+/* ====about section==== */
 .about-section {
   max-width: 760px;
   margin: auto;
@@ -379,6 +391,7 @@ input {
   text-align: center;
 }
 
+/* ====footer==== */
 .site-footer {
   background: #142840;
   color: #ffffff;
@@ -455,6 +468,7 @@ input {
   line-height: 1.6;
 }
 
+/* ====footer bottom==== */
 .footer-bottom {
   max-width: 1400px;
   margin: 0 auto;
@@ -472,6 +486,7 @@ input {
   font-size: 12px;
 }
 
+/* ====screen reader text==== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -484,6 +499,7 @@ input {
   border: 0;
 }
 
+/* ====tablet layout==== */
 @media (max-width: 900px) {
   .footer-container {
     grid-template-columns: repeat(2, 1fr);
@@ -491,6 +507,7 @@ input {
   }
 }
 
+/* ====mobile layout==== */
 @media (max-width: 760px) {
   .site-header {
     min-height: 68px;
@@ -552,6 +569,7 @@ input {
   }
 }
 
+/* ====small mobile layout==== */
 @media (max-width: 550px) {
   .site-footer {
     padding-top: 45px;
@@ -569,6 +587,7 @@ input {
   }
 }
 
+/* ====extra small screens==== */
 @media (max-width: 420px) {
   .brand {
     font-size: 10px;
