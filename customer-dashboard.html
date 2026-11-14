@@ -2,306 +2,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Library Account | Wynberg Public Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library Account | Wynberg Public Library</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="customer.css">
+    <link rel="stylesheet" href="customer.css">
 </head>
 <body class="dashboard">
 
-  <header class="topbar dashbar">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">▤</span>
-      <span>
-        WYNBERG
-        <strong>PUBLIC LIBRARY</strong>
-      </span>
-    </a>
+    <header class="topbar dashbar">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">▤</span>
+            <span>WYNBERG<strong>PUBLIC LIBRARY</strong></span>
+        </a>
 
-    <span class="portal-label">Customer Portal</span>
+        <span class="portal-label">Customer Portal</span>
+        <button id="logout" class="logout">Log out ↗</button>
+    </header>
 
-    <button id="logout" class="logout">Log out ↗</button>
-  </header>
+    <div class="shell">
 
-  <div class="shell">
+        <aside class="sidebar">
 
-    <aside class="sidebar">
-
-      <div class="member">
-        <div class="avatar">TM</div>
-
-        <div>
-          <b>Thando Mokoena</b>
-          <small>Library Member</small>
-        </div>
-      </div>
-
-      <small class="side-title">MY ACCOUNT</small>
-
-      <a class="selected" href="#overview">⌂ &nbsp; Overview</a>
-      <a href="#borrowed">▤ &nbsp; My borrowed books <b>3</b></a>
-      <a href="#reservations">◷ &nbsp; Reserved books <b>2</b></a>
-      <a href="#fines">R &nbsp; Outstanding fines <b class="red-count">1</b></a>
-      <a href="#profile">♙ &nbsp; Personal information</a>
-
-      <div class="side-help">
-        Need help with your account?
-        <a href="index.html">Contact the library →</a>
-      </div>
-
-    </aside>
-
-    <main class="main" id="overview">
-
-      <div class="welcome">
-
-        <div>
-          <small class="red">MEMBER DASHBOARD</small>
-          <h1>Hello, Thando 👋</h1>
-          <p class="muted">Here's an overview of your library account.</p>
-        </div>
-
-        <div class="card-no">
-          <small>LIBRARY CARD</small>
-          <b>WPL000123</b>
-        </div>
-
-      </div>
-
-      <section class="stats">
-
-        <article>
-          <span>Currently borrowed</span>
-          <b>3</b>
-          <small>Books checked out</small>
-        </article>
-
-        <article>
-          <span>Reserved books</span>
-          <b>2</b>
-          <small>Active reservations</small>
-        </article>
-
-        <article>
-          <span>Outstanding fines</span>
-          <b>R25.00</b>
-          <small>Balance on your account</small>
-        </article>
-
-      </section>
-
-      <section class="panel" id="borrowed">
-
-        <div class="panel-head">
-          <div>
-            <h2>Books to return</h2>
-            <p>Keep an eye on your upcoming return dates.</p>
-          </div>
-
-          <a href="#borrowed">My borrowed books ↓</a>
-        </div>
-
-        <div class="table-scroll">
-          <table>
-
-            <thead>
-              <tr>
-                <th>BOOK</th>
-                <th>DATE BORROWED</th>
-                <th>RETURN BY</th>
-                <th>STATUS</th>
-              </tr>
-            </thead>
-
-            <tbody>
-
-              <tr>
-                <td>
-                  <div class="book">
-                    <i class="cover c1">THE<br>ALCHEMIST</i>
-
-                    <span>
-                      <b>The Alchemist</b>
-                      <small>Paulo Coelho</small>
-                    </span>
-                  </div>
-                </td>
-
-                <td>02 Nov 2026</td>
-                <td><b>14 Nov 2026</b></td>
-                <td><em class="soon">Due soon</em></td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="book">
-                    <i class="cover c2">HOME<br>GOING</i>
-
-                    <span>
-                      <b>Homegoing</b>
-                      <small>Yaa Gyasi</small>
-                    </span>
-                  </div>
-                </td>
-
-                <td>04 Nov 2026</td>
-                <td><b>18 Nov 2026</b></td>
-                <td><em class="ok">On time</em></td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="book">
-                    <i class="cover c3">ATOMIC<br>HABITS</i>
-
-                    <span>
-                      <b>Atomic Habits</b>
-                      <small>James Clear</small>
-                    </span>
-                  </div>
-                </td>
-
-                <td>06 Nov 2026</td>
-                <td><b>20 Nov 2026</b></td>
-                <td><em class="ok">On time</em></td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-
-      </section>
-
-      <div class="columns">
-
-        <section class="panel" id="reservations">
-
-          <div class="panel-head">
-            <div>
-              <h2>Reserved books</h2>
-              <p>Your current reservations.</p>
+            <div class="member">
+                <div class="avatar">WPL</div>
+                <div>
+                    <b id="customerName">Loading...</b>
+                    <small>Library Member</small>
+                </div>
             </div>
 
-            <span class="pill">2 active</span>
-          </div>
+            <small class="side-title">MY ACCOUNT</small>
 
-          <div class="reserve">
-            <i class="cover r1">IKIGAI</i>
+            <a class="selected" href="#overview">⌂ &nbsp; Overview</a>
+            <a href="#borrowed">▤ &nbsp; My borrowed books <b id="borrowedCount">0</b></a>
+            <a href="#reservations">◷ &nbsp; Reserved books <b id="reservationCount">0</b></a>
+            <a href="#fines">R &nbsp; Outstanding fines <b class="red-count" id="fineCount">0</b></a>
+            <a href="#profile">♙ &nbsp; Personal information</a>
 
-            <span>
-              <b>Ikigai</b>
-              <small>Héctor García & Francesc Miralles</small>
-              <em class="soon">Waiting for collection</em>
-            </span>
-          </div>
-
-          <div class="reserve">
-            <i class="cover r2">SAPIENS</i>
-
-            <span>
-              <b>Sapiens</b>
-              <small>Yuval Noah Harari</small>
-              <em class="queue">In reservation queue</em>
-            </span>
-          </div>
-
-        </section>
-
-        <section class="panel" id="fines">
-
-          <div class="panel-head">
-            <div>
-              <h2>Outstanding fines</h2>
-              <p>Your current account balance.</p>
+            <div class="side-help">
+                Need help with your account?
+                <a href="index.html">Contact the library →</a>
             </div>
 
-            <span class="money-icon">R</span>
-          </div>
+        </aside>
 
-          <div class="fine-total">
-            <span>Total outstanding</span>
-            <b>R25.00</b>
-          </div>
+        <main class="main" id="overview">
 
-          <div class="fine-line">
-            <span>Overdue return fine</span>
-            <b>R25.00</b>
-          </div>
+            <div class="welcome">
+                <div>
+                    <small class="red">MEMBER DASHBOARD</small>
+                    <h1 id="welcomeName">Hello!</h1>
+                    <p class="muted">Here's an overview of your library account.</p>
+                </div>
 
-          <p class="fine-note">
-            Please speak to library staff to confirm and settle outstanding fines.
-            Online payments are not available in this prototype.
-          </p>
+                <div class="card-no">
+                    <small>LIBRARY CARD</small>
+                    <b id="libraryCard">Loading...</b>
+                </div>
+            </div>
 
-        </section>
+            <section class="stats">
+                <article>
+                    <span>Currently borrowed</span>
+                    <b id="borrowedStat">0</b>
+                    <small>Books checked out</small>
+                </article>
 
-      </div>
+                <article>
+                    <span>Reserved books</span>
+                    <b id="reservationStat">0</b>
+                    <small>Active reservations</small>
+                </article>
 
-      <section class="panel" id="profile">
+                <article>
+                    <span>Outstanding fines</span>
+                    <b id="fineStat">R0.00</b>
+                    <small>Balance on your account</small>
+                </article>
+            </section>
 
-        <div class="panel-head">
-          <div>
-            <h2>Personal information</h2>
-            <p>Your registered library details.</p>
-          </div>
+            <section class="panel" id="borrowed">
 
-          <span class="member-status">● Active member</span>
-        </div>
+                <div class="panel-head">
+                    <div>
+                        <h2>Books to return</h2>
+                        <p>Keep an eye on your upcoming return dates.</p>
+                    </div>
+                    <a href="#borrowed">My borrowed books ↓</a>
+                </div>
 
-        <div class="profile-grid">
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>BOOK</th>
+                                <th>DATE BORROWED</th>
+                                <th>RETURN BY</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
 
-          <div>
-            <small>FULL NAME</small>
-            <b>Thando Mokoena</b>
-          </div>
+                        <tbody id="borrowedBooksBody">
+                            <tr>
+                                <td colspan="4">Loading borrowed books...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-          <div>
-            <small>LIBRARY CARD NUMBER</small>
-            <b>WPL000123</b>
-          </div>
+            </section>
 
-          <div>
-            <small>EMAIL ADDRESS</small>
-            <b>thando.mokoena@example.com</b>
-          </div>
+            <div class="columns">
 
-          <div>
-            <small>CONTACT NUMBER</small>
-            <b>+27 82 555 0148</b>
-          </div>
+                <section class="panel" id="reservations">
 
-          <div>
-            <small>MEMBERSHIP STATUS</small>
-            <b class="green">Active</b>
-          </div>
+                    <div class="panel-head">
+                        <div>
+                            <h2>Reserved books</h2>
+                            <p>Your current reservations.</p>
+                        </div>
 
-          <div>
-            <small>MEMBER SINCE</small>
-            <b>March 2024</b>
-          </div>
+                        <span class="pill" id="activeReservationLabel">0 active</span>
+                    </div>
 
-        </div>
+                    <div id="customerReservations">
+                        <p>Loading reservations...</p>
+                    </div>
 
-        <p class="profile-foot">
-          To update your personal details, please contact a librarian.
-          Profile editing will be added later.
-        </p>
+                </section>
 
-      </section>
+                <section class="panel" id="fines">
 
-      <footer>
-        © <span id="year"></span> Wynberg Public Library · Customer Portal
-      </footer>
+                    <div class="panel-head">
+                        <div>
+                            <h2>Outstanding fines</h2>
+                            <p>Your current account balance.</p>
+                        </div>
 
-    </main>
+                        <span class="money-icon">R</span>
+                    </div>
 
-  </div>
+                    <div class="fine-total">
+                        <span>Total outstanding</span>
+                        <b id="fineTotal">R0.00</b>
+                    </div>
 
-  <script src="js/dashboard.js"></script>
+                    <div id="customerFines">
+                        <p>Loading fines...</p>
+                    </div>
+
+                    <p class="fine-note">
+                        Please speak to library staff to confirm and settle outstanding fines.
+                        Online payments are not available in this prototype.
+                    </p>
+
+                </section>
+
+            </div>
+
+            <section class="panel" id="profile">
+
+                <div class="panel-head">
+                    <div>
+                        <h2>Personal information</h2>
+                        <p>Your registered library details.</p>
+                    </div>
+
+                    <span class="member-status" id="memberStatus">● Active member</span>
+                </div>
+
+                <div class="profile-grid">
+                    <div><small>FULL NAME</small><b id="profileName">Loading...</b></div>
+                    <div><small>LIBRARY CARD NUMBER</small><b id="profileCard">Loading...</b></div>
+                    <div><small>EMAIL ADDRESS</small><b id="profileEmail">Loading...</b></div>
+                    <div><small>CONTACT NUMBER</small><b id="profilePhone">Loading...</b></div>
+                    <div><small>MEMBERSHIP STATUS</small><b id="profileStatus">Loading...</b></div>
+                    <div><small>MEMBER SINCE</small><b id="profileDate">Loading...</b></div>
+                </div>
+
+                <p class="profile-foot">
+                    To update your personal details, please contact a librarian.
+                    Profile editing is not available in this prototype.
+                </p>
+
+            </section>
+
+            <footer>
+                © <span id="year"></span> Wynberg Public Library · Customer Portal
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>

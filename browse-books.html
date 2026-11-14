@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Books | Wynberg Public Library</title>
+    <link rel="stylesheet" href="browse-books.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a class="brand" href="index.html" aria-label="Wynberg Public Library home">
+            <span class="brand-mark" aria-hidden="true">▤</span>
+            <span>WYNBERG<strong>PUBLIC LIBRARY</strong></span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="browse-books.html" class="active">Browse Books</a>
+            <a href="customer-dashboard.html">My Account</a>
+        </nav>
+
+        <a href="customer-login.html" class="login-btn">Sign In</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">DISCOVER YOUR NEXT READ</span>
+            <h1>Find your next<br><span>great read.</span></h1>
+            <p>Explore our collection of books, discover new authors and find something worth reading.</p>
+
+            <div class="search-container">
+                <span>⌕</span>
+                <input type="text" id="searchInput" placeholder="Search by book title or author...">
+                <button type="button" onclick="searchBooks()">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">OUR COLLECTION</span>
+                <h2>Browse our books</h2>
+                <p>Find something interesting to read from our library collection.</p>
+            </div>
+            <span class="book-count" id="bookCount">Loading books...</span>
+        </div>
+
+        <div class="categories" id="categoryFilters">
+            <button class="category active" data-category="All">All Books</button>
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+            <p>Loading books...</p>
+        </div>
+
+        <div class="no-results" id="noResults" style="display:none;">
+            <h3>No books found</h3>
+            <p>Try another title, author or category.</p>
+        </div>
+    </main>
+
+    <div class="modal" id="bookModal">
+        <div class="modal-content">
+            <button type="button" class="close-modal" onclick="closeModal()" aria-label="Close modal">×</button>
+
+            <span class="eyebrow">BOOK INFORMATION</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalAuthor"></p>
+            <p id="modalCategory" class="modal-category"></p>
+            <p class="modal-note" id="modalNote"></p>
+
+            <div class="modal-actions">
+                <button type="button" class="modal-button" id="borrowButton" onclick="handleBookAction('borrow')">
+                    Borrow Book
+                </button>
+
+                <button type="button" class="modal-button" id="reserveButton" onclick="handleBookAction('reserve')">
+                    Reserve Book
+                </button>
+            </div>
+
+            <button type="button" class="modal-close-button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-brand">WYNBERG PUBLIC LIBRARY</div>
+        <p>Discover. Read. Learn. Grow.</p>
+        <small>© 2026 Wynberg Public Library. All rights reserved.</small>
+    </footer>
+
+    <script>
+        const API_URL = "http://127.0.0.1:3000/api";
+
+        const searchInput = document.getElementById("searchInput");
+        const bookGrid = document.getElementById("bookGrid");
+        const bookCount = document.getElementById("bookCount");
+        const categoryFilters = document.getElementById("categoryFilters");
+        const noResults = document.getElementById("noResults");
+        const bookModal = document.getElementById("bookModal");
+
+        let allBooks = [];
+        let selectedCategory = "All";
+        let selectedBook = null;
+
+        /* =====html safety==== */
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, character => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            })[character]);
+        }
+
+        /* =====load books==== */
+
+        async function loadBooks() {
+            bookGrid.innerHTML = "<p>Loading books...</p>";
+
+            try {
+                const response = await fetch(`${API_URL}/books`);
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    throw new Error(data.message || "Could not load books.");
+                }
+
+                allBooks = data.books || [];
+                createCategoryFilters();
+                displayBooks();
+
+            } catch (error) {
+                console.error(error);
+                bookGrid.innerHTML = "<p>Unable to load books. Please try again.</p>";
+                bookCount.textContent = "Books unavailable";
+            }
+        }
+
+        /* =====category filters==== */
+
+        function createCategoryFilters() {
+            const categories = [
+                ...new Set(
+                    allBooks
+                        .map(book => book.category)
+                        .filter(category => category && category.trim())
+                )
+            ].sort();
+
+            categoryFilters.innerHTML = `
+                <button class="category active" data-category="All">All Books</button>
+                ${categories.map(category => `
+                    <button class="category" data-category="${escapeHTML(category)}">
+                        ${escapeHTML(category)}
+                    </button>
+                `).join("")}
+            `;
+
+            categoryFilters.querySelectorAll(".category").forEach(button => {
+                button.addEventListener("click", () => {
+                    categoryFilters.querySelectorAll(".category")
+                        .forEach(item => item.classList.remove("active"));
+
+                    button.classList.add("active");
+                    selectedCategory = button.dataset.category;
+                    displayBooks();
+                });
+            });
+        }
+
+        /* =====display books==== */
+
+        function displayBooks() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            const filteredBooks = allBooks.filter(book => {
+                const matchesSearch =
+                    String(book.title || "").toLowerCase().includes(searchTerm) ||
+                    String(book.author || "").toLowerCase().includes(searchTerm);
+
+                const matchesCategory =
+                    selectedCategory === "All" ||
+                    String(book.category || "").toLowerCase() === selectedCategory.toLowerCase();
+
+                return matchesSearch && matchesCategory;
+            });
+
+            bookCount.textContent = `${filteredBooks.length} books found`;
+            noResults.style.display = filteredBooks.length ? "none" : "block";
+
+            bookGrid.innerHTML = filteredBooks.map(book => {
+                const copies = Number(book.available_copies || 0);
+
+                return `
+                    <article class="book-card">
+                        <div class="book-cover">
+                            <div class="book-placeholder">
+                                <span>WPL</span>
+                                <small>Wynberg Public Library</small>
+                            </div>
+                        </div>
+
+                        <div class="book-info">
+                            <span class="book-category">${escapeHTML(book.category || "GENERAL")}</span>
+                            <h3>${escapeHTML(book.title)}</h3>
+                            <p>${escapeHTML(book.author)}</p>
+
+                            <div class="book-footer">
+                                ${copies > 0
+                                    ? `<span class="available">${copies} available</span>`
+                                    : `<span class="unavailable">Currently unavailable</span>`}
+
+                                <button type="button" onclick="viewBook(${Number(book.book_id)})">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        /* =====search books==== */
+
+        function searchBooks() {
+            displayBooks();
+        }
+
+        searchInput.addEventListener("input", displayBooks);
+
+        /* =====book details==== */
+
+        function viewBook(bookId) {
+            selectedBook = allBooks.find(
+                book => Number(book.book_id) === Number(bookId)
+            );
+
+            if (!selectedBook) return;
+
+            const copies = Number(selectedBook.available_copies || 0);
+
+            document.getElementById("modalTitle").textContent = selectedBook.title;
+            document.getElementById("modalAuthor").textContent = `By ${selectedBook.author}`;
+            document.getElementById("modalCategory").textContent =
+                `Category: ${selectedBook.category || "General"}`;
+
+            document.getElementById("modalNote").textContent = copies > 0
+                ? `${copies} ${copies === 1 ? "copy is" : "copies are"} available.`
+                : "This book is unavailable to borrow. You can reserve it.";
+
+            const borrowButton = document.getElementById("borrowButton");
+
+            borrowButton.disabled = copies <= 0;
+            borrowButton.textContent = copies > 0 ? "Borrow Book" : "Currently Unavailable";
+
+            document.getElementById("reserveButton").disabled = false;
+            bookModal.style.display = "flex";
+        }
+
+        /* =====customer identification==== */
+
+            async function getCustomer() {
+    const identity = (sessionStorage.getItem("wplCustomerIdentity") || "")
+        .trim()
+        .toLowerCase();
+
+    if (!identity) {
+        throw new Error("Please sign in to your library account.");
+    }
+
+    const response = await fetch(`${API_URL}/members`);
+    const data = await response.json();
+
+    if (!response.ok || !data.success || !Array.isArray(data.members)) {
+        throw new Error("Could not retrieve library members.");
+    }
+
+    const normalizedIdentity = identity.replace(/[^a-z0-9]/g, "");
+    const cardMatch = normalizedIdentity.match(/^wpl0*(\d+)$/);
+
+    const customer = data.members.find(member => {
+        const memberId = Number(member.member_id);
+        const email = String(member.email || "").trim().toLowerCase();
+
+        if (cardMatch) {
+            return memberId === Number(cardMatch[1]);
+        }
+
+        if (/^\d+$/.test(normalizedIdentity)) {
+            return memberId === Number(normalizedIdentity);
+        }
+
+        return email === identity;
+    });
+
+    if (!customer) {
+        throw new Error("No matching library member was found. Check your library card number.");
+    }
+
+    if (String(customer.status || "").trim().toLowerCase() !== "active") {
+        throw new Error("Your library membership is not active.");
+    }
+
+    return customer;
+}
+
+        /* =====borrow and reserve books==== */
+
+        async function handleBookAction(action) {
+            if (!selectedBook) return;
+
+            if (!sessionStorage.getItem("wplDemoCustomer")) {
+                sessionStorage.setItem("wplPendingBookAction", JSON.stringify({
+                    action,
+                    bookId: selectedBook.book_id
+                }));
+
+                alert("Please sign in to continue.");
+                location.href = "customer-login.html";
+                return;
+            }
+
+            const button = document.getElementById(
+                action === "borrow" ? "borrowButton" : "reserveButton"
+            );
+
+            button.disabled = true;
+
+            try {
+                const customer = await getCustomer();
+
+                if (action === "borrow") {
+                    if (Number(selectedBook.available_copies) <= 0) {
+                        throw new Error("This book is currently unavailable.");
+                    }
+
+                    const dueDate = new Date();
+                    dueDate.setDate(dueDate.getDate() + 14);
+
+                    const dueDateString = [
+                        dueDate.getFullYear(),
+                        String(dueDate.getMonth() + 1).padStart(2, "0"),
+                        String(dueDate.getDate()).padStart(2, "0")
+                    ].join("-");
+
+                    const response = await fetch(`${API_URL}/borrowings`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            member_id: customer.member_id,
+                            book_id: selectedBook.book_id,
+                            due_date: dueDateString
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.message || "Could not borrow this book.");
+                    }
+
+                    alert(`Book borrowed successfully! Return by ${dueDateString}.`);
+
+                } else {
+                    const response = await fetch(`${API_URL}/reservations`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            member_id: customer.member_id,
+                            book_id: selectedBook.book_id
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.message || "Could not reserve this book.");
+                    }
+
+                    alert("Your book reservation was created successfully!");
+                }
+
+                closeModal();
+                await loadBooks();
+
+            } catch (error) {
+                alert(error.message);
+
+            } finally {
+                button.disabled = false;
+            }
+        }
+
+        /* =====close modal==== */
+
+        function closeModal() {
+            bookModal.style.display = "none";
+            selectedBook = null;
+        }
+
+        window.addEventListener("click", event => {
+            if (event.target === bookModal) closeModal();
+        });
+
+        /* =====initialise page==== */
+
+        loadBooks();
+    </script>
+
+</body>
+</html>

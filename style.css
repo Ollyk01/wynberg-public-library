@@ -1,8 +1,4 @@
 
-/* ========================================
-   GLOBAL STYLES
-======================================== */
-
 * {
   box-sizing: border-box;
 }
@@ -34,11 +30,6 @@ input {
   --dark: #171717;
   --muted: #686868;
 }
-
-
-/* ========================================
-   HEADER AND NAVIGATION
-======================================== */
 
 .site-header {
   position: relative;
@@ -117,11 +108,6 @@ input {
   background: #fff;
 }
 
-
-/* ========================================
-   HERO SECTION
-======================================== */
-
 .hero {
   height: 570px;
   min-height: min(620px, calc(100vh - 76px));
@@ -130,7 +116,7 @@ input {
   place-items: center;
   overflow: hidden;
   color: #fff;
-  background: url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2000&q=85") center 47% / cover;
+  background: url("assets/pexels-brentsingletonphoto-38543249.jpg") center 47% / cover;
 }
 
 .hero-shade {
@@ -176,11 +162,6 @@ input {
   font-weight: 600;
   letter-spacing: -1.5px;
 }
-
-
-/* ========================================
-   BOOK SEARCH FORM
-======================================== */
 
 .search-form {
   width: min(510px, 100%);
@@ -237,11 +218,6 @@ input {
   font-size: 12px;
 }
 
-
-/* ========================================
-   HERO SCROLL INDICATOR
-======================================== */
-
 .scroll-cue {
   position: absolute;
   bottom: 22px;
@@ -278,11 +254,6 @@ input {
   }
 }
 
-
-/* ========================================
-   INTRODUCTION SECTION
-======================================== */
-
 .intro-section {
   padding: 88px clamp(22px, 7vw, 100px) 96px;
   background: #f6f5f3;
@@ -312,11 +283,6 @@ input {
   font-size: 15px;
   line-height: 1.8;
 }
-
-
-/* ========================================
-   FEATURE CARDS
-======================================== */
 
 .feature-grid {
   display: grid;
@@ -365,11 +331,6 @@ input {
   font-weight: 700;
 }
 
-
-/* ========================================
-   CUSTOMER ACCOUNT BANNER
-======================================== */
-
 .account-banner {
   display: flex;
   align-items: center;
@@ -411,11 +372,6 @@ input {
   white-space: nowrap;
 }
 
-
-/* ========================================
-   ABOUT SECTION
-======================================== */
-
 .about-section {
   max-width: 760px;
   margin: auto;
@@ -423,43 +379,98 @@ input {
   text-align: center;
 }
 
-
-/* ========================================
-   FOOTER
-======================================== */
-
 .site-footer {
-  padding: 34px 20px;
-  text-align: center;
-  color: #c7c7c7;
-  background: #101010;
+  background: #142840;
+  color: #ffffff;
+  padding: 65px clamp(25px, 7vw, 100px) 0;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.3fr 1.3fr;
+  gap: 55px;
+  padding-bottom: 55px;
 }
 
 .footer-brand {
-  color: #fff;
-  font-size: 12px;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 25px;
   letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .footer-brand strong {
-  font-weight: 400;
+  display: block;
+  font-size: 17px;
+  letter-spacing: 2.35px;
+  font-weight: 500;
 }
 
-.site-footer p {
-  margin: 8px 0 18px;
-  color: #999;
+.footer-tagline {
+  margin: 15px 0;
+  color: #e2a5a8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer-description {
+  max-width: 310px;
+  color: #c5cfda;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.footer-container h3 {
+  margin: 5px 0 22px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #c5cfda;
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #e2a5a8;
+}
+
+.footer-hours p,
+.footer-contact p {
+  margin: 0 0 14px;
+  color: #c5cfda;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #aebdcb;
   font-size: 12px;
 }
-
-.site-footer > span {
-  font-size: 10px;
-  color: #777;
-}
-
-
-/* ========================================
-   ACCESSIBILITY
-======================================== */
 
 .sr-only {
   position: absolute;
@@ -473,13 +484,14 @@ input {
   border: 0;
 }
 
-
-/* ========================================
-   TABLET AND MOBILE RESPONSIVENESS
-======================================== */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
 
 @media (max-width: 760px) {
-
   .site-header {
     min-height: 68px;
     padding: 0 20px;
@@ -538,16 +550,26 @@ input {
     padding-top: 45px;
     padding-bottom: 45px;
   }
-
 }
 
+@media (max-width: 550px) {
+  .site-footer {
+    padding-top: 45px;
+  }
 
-/* ========================================
-   SMALL MOBILE SCREENS
-======================================== */
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 
 @media (max-width: 420px) {
-
   .brand {
     font-size: 10px;
     letter-spacing: 1.5px;
@@ -579,5 +601,4 @@ input {
     font-size: 10px;
     padding: 0 10px;
   }
-
 }

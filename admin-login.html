@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Wynberg Public Library</title>
+    <link rel="stylesheet" href="admin-login.css">
+</head>
+<body>
+    <main class="login-container">
+        <section class="login-card">
+            <a href="index.html" class="brand">
+                <span class="brand-mark">W</span>
+                <span class="brand-name">
+                    WYNBERG
+                    <strong>PUBLIC LIBRARY</strong>
+                </span>
+            </a>
+
+            <div class="login-heading">
+                <span class="admin-icon">A</span>
+                <p class="eyebrow">STAFF ACCESS</p>
+                <h1>Admin Login</h1>
+                <p>Sign in to manage library operations and services.</p>
+            </div>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your admin email"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button type="button" id="togglePassword" class="toggle-password">
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <p id="loginMessage" class="login-message" role="alert"></p>
+
+                <button type="submit" id="loginButton" class="login-button">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <a href="index.html">← Back to Library Home</a>
+                <p>Authorised library staff only</p>
+            </div>
+        </section>
+
+        <footer>
+            © <span id="year"></span> Wynberg Public Library. All rights reserved.
+        </footer>
+    </main>
+
+    <script src="admin-login.js"></script>
+</body>
+</html>
